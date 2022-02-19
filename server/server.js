@@ -1,21 +1,21 @@
 console.log("hit")
-
+require('dotenv').config();
+const Sequelize = require('sequelize')
 const express = require('express');
-const morgan = require('morgan');
-const { Prohairesis } = require('prohairesis');
-
-const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 5050;
+const {seed} = require('./seed.js')
+const port = process.env.PORT || 5500;
+
+
+
+app.post('/seed', seed)
 
 app 
     .use(express.static('public'))
-    .use(morgan('dev'))
-
-    .use(bodyParser.urlencoded({ extended: false }))
-    .use(bodyParser.json())
-    .listen(port, () => {`Server hearing you on port ${port}`});
-
+    .use(express.json())
+    .use(cors())
+    .listen(port, () => console.log(`Server hearing you on port ${port}`));
+    
 
     console.log('hit2')
