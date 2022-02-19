@@ -1,6 +1,5 @@
 console.log("hit")
 require('dotenv').config();
-const Sequelize = require('sequelize')
 const express = require('express');
 const cors = require('cors');
 const app = express();
