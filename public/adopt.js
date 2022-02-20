@@ -122,17 +122,18 @@ const adoptDogs = [
    },
   ]
   
-  const sectionCenter = document.querySelector('.section-center');
   
   window.addEventListener("DOMContentLoaded", () => {
-    displayMenuItems(adoptDogs)
+      displayMenuItems(adoptDogs)
     });
-  
+    
+const sectionCenter = document.querySelector('.section-center');
+    
   function displayMenuItems(dogItem){
     let displayDogs = dogItem.map(item => {
-      return ` <article class="menu-item">
+      return ` <article class="dog-profile">
       <img src=${item.img} class = photo alt=${item.name}>
-      <div class="item-info">
+      <div class="dog-info">
         <header>
           <h4>${item.name}</h4>
           <br>
