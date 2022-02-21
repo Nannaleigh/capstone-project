@@ -159,7 +159,7 @@ Navbar
 ===============
 */
 nav {
-    background: #fad4b777;
+    background: #017e8e63;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
   .nav-header {
@@ -170,7 +170,7 @@ nav {
   }
   .nav-toggle {
     font-size: 1.5rem;
-    color: hsl(205, 78%, 60%);
+    color: #01d7f4;
     background: transparent;
     border-color: transparent;
     transition: all 0.3s linear ;
