@@ -33,4 +33,3 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
      }
  }
 
- 

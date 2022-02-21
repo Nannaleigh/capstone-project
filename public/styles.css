@@ -1,4 +1,9 @@
 
+body {
+  background-color: #ffe5d255;
+}
+
+
 /* Section used for adopt.html: */
 .section-center {
     width: 100vw;
@@ -16,7 +21,7 @@
   .photo {
     object-fit: cover;
     height: 200px;
-    border: 0.25rem solid gold;
+    border: 0.25rem solid #4b3f72;
     border-radius: 0.5rem;
   }
   ul {
@@ -150,7 +155,7 @@ Navbar
 ===============
 */
 nav {
-    background: whitesmoke;
+    background: #fad4b777;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
   .nav-header {
