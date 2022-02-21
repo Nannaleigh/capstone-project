@@ -7,7 +7,6 @@ const {seed} = require('./seed.js')
 const port = process.env.PORT || 5500;
 
 
-
 app.post('/seed', seed)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'))

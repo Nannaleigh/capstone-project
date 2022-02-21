@@ -18,6 +18,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
          drop table if exists applicants;       
          create table applicants (
              applicant_id serial primary key,
+             dog varchar(100)
              first_name varchar(100), 
              last_name varchar(100),
              address varchar(100),

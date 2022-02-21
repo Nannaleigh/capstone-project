@@ -1,8 +1,11 @@
 
 body {
-  background-color: #ffe5d255;
+  background-color: #fff6ea;
 }
-
+p {
+  width: 70%;
+  text-align: center;
+}
 
 /* Section used for adopt.html: */
 .section-center {
@@ -35,21 +38,22 @@ body {
     margin-bottom: 2rem;
   }
 
-  .logo {
-      height: 200px;
-      justify-content: left;
+  /*
+  =============== 
+  Home
+  ===============
+  */
+  .icon {
+      height: 50px;
+      justify-content: center;
+      margin: 15px;
   }
-/*
-=============== 
-Home
-===============
-*/
 .logo {
     font-family: 'Amatic SC', cursive;
     font-family: 'Josefin Sans', sans-serif;
     font-family: 'Sedgwick Ave', cursive; 
     font-size: 2.5rem;
-    color:#017d8e
+    color:#017d8e;
 }
 /*
 =============== 
@@ -202,6 +206,31 @@ nav {
   .show-links {
     height: 10rem;
   }
+/*
+=============== 
+Adoption Form
+===============
+*/
+  #profile-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 600px;
+    margin-left: 15px;
+}
+
+#profile-form > input {
+    margin-bottom: 15px;
+}
+h2 {
+  margin: 15px;
+}
+#profile-form > button {
+    background-color: #01d7f4;
+    border: none;
+    color: white;
+    padding: 5px;
+}
   @media screen and (min-width: 1200px) {
     .section-center {
       width: 95vw;
