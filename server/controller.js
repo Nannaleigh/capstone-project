@@ -10,3 +10,9 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
         }
     }
 });
+
+module.exports = {
+    submitForm: (req,res) => {
+        const
+    }
+}
