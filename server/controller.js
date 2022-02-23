@@ -1,18 +1,19 @@
-const req = require('express/lib/request');
-const Sequelize = require('sequelize');
-const { CONNECTION_STRING} = process.env
-
-const sequelize = new Sequelize(CONNECTION_STRING, {
-    dialect: 'postgres', 
-    dialectOptions: { 
-        ssl: {
-            rejectUnauthorized: false
-        }
-    }
-});
+const comments = require('./db.json')
+globalId = 4;
 
 module.exports = {
-    submitForm: (req,res) => {
-        const
+    getComments: (req, res) => res.status(200).send(comments),
+
+    createComment: (req, res) => {
+        let { name, comment } = req.body;
+
+        let newComment = {
+            id: globalId, 
+            name: name, 
+            comment: comment, 
+        };
+        comments.push(newComment);
+        res.status(200).send(comments);
+        globalId++;
     }
 }

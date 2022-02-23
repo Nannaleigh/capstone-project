@@ -1,73 +1,47 @@
-const profileForm = document.querySelector('#profile-form')
-const dog = document.querySelector('#dog')
-const firstNameInput = document.querySelector('#first-name')
-const lastNameInput = document.querySelector('#last-name')
-const phoneInput = document.querySelector('#phone-number')
-const emailInput = document.querySelector('#email')
-const addressInput = document.querySelector('#address')
-const cityInput = document.querySelector('#city')
-const stateInput = document.querySelector('#state')
-const zipCodeInput = document.querySelector('#zip-code')
+const commentContainer = document.querySelector("#comment-container")
+const form = document.querySelector('form')
+// /api/comments
 
-const inputs = [firstNameInput, lastNameInput, phoneInput, emailInput, addressInput, cityInput, stateInput, zipCodeInput]
+const commentCallback = ({ data : comments }) => displayComments(comments)
+const errCallback = err => console.log(err)
 
-// inputs.forEach(input => {
-//     input.addEventListener('change', (e) => {
-//         input.value = e.target.value
-//         console.log(input.value)
-//     })
-// })
+const getAllComments = () => axios.get('http://localhost:6665/api/comments').then(commentCallback).catch(errCallback)
+const createComment = body => axios.post('http://localhost:6665/api/comments', body).then(commentCallback).catch(errCallback)
 
-function getProfileInfo() {
-    axios.get('/form') 
-        .then(res => {
-            const form = res.data[0]
 
-            const {
-                dog: dog,
-                first_name: firstName, 
-                last_name: lastName, 
-                phone_number: phoneNumber, 
-                email, 
-                address, 
-                city, 
-                state, 
-                zip_code: zipCode
-            } = form
-            dogInput.value = dog
-            firstNameInput.value = firstName
-            lastNameInput.value = lastName
-            phoneInput.value = phoneNumber
-            emailInput.value = email
-            addressInput.value = address
-            cityInput.value = city
-            stateInput.value = state
-            zipCodeInput.value = zipCode
-        })
-}
+function submitHandler(e) {
+    e.preventDefault()
+    let name = document.querySelector('#name')
+    let comment = document.querySelector('#comment')
 
-function updateInfo() {
-    let body = {
-        dog: dog.value,
-        firstName: firstNameInput.value, 
-        lastName: lastNameInput.value, 
-        phoneNumber: phoneInput.value, 
-        email: emailInput.value, 
-        address: addressInput.value,
-        city: cityInput.value, 
-        state: stateInput.value, 
-        zipCode: zipCodeInput.value
+    let bodyObj = {
+        name: name.value,
+        input: comment.value
     }
 
-        .put('/form', body)
-        .then(res => console.log(1, res))
-        .catch(err => console.log(err))
+    createComment(bodyObj)
+
+    name.value = " "
+    comment.value = " "
 }
 
-profileForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    updateInfo()
-})
+function createCommentCard(comment) {
+    const commentCard = document.createElement('div')
+    commentCard.classList.add('comment-card')
 
+    commentCard.innerHTML = `
+    <p class="comment">${comment.name} says: "${comment.comment}"</p>
+    `
 
-getProfileInfo()
+    commentContainer.appendChild (commentCard)
+}
+
+function displayComments(arr) {
+    commentContainer.innerHTML = ``
+    for (let i = 0; i < arr.length; i++) {
+        createCommentCard(arr[i])
+    }
+}
+form.addEventListener('submit', submitHandler)
+
+getAllComments()
